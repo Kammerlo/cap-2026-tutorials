@@ -20,6 +20,22 @@ A runnable REST API that demonstrates each transaction building step:
 
 **Tech stack:** Java 17, Spring Boot 3.4, [cardano-client-lib](https://github.com/bloxbean/cardano-client-lib) 0.7.1, Blockfrost backend
 
+### [react/](react/) -- React + MeshJS Demo App
+
+A browser-based single-page app that demonstrates the same concepts using wallet extensions:
+
+| Feature | Description |
+|---------|-------------|
+| Connect Wallet | Connect via browser wallet extension (Nami, Eternl, Lace, etc.) |
+| Wallet Info | View address, ADA balance, and UTXO count |
+| Send ADA | Transfer ADA to any preprod address |
+| Send Tokens | Transfer native tokens (multi-asset) |
+| Mint Tokens | Mint new native tokens with a single-signature policy |
+
+**Tech stack:** TypeScript, React 18, Vite, [MeshJS](https://meshjs.dev/) (core + react)
+
+**Key difference:** The Java project manages keys server-side via mnemonics. The React project uses browser wallet extensions -- private keys never leave the user's device.
+
 ### [presentation/](presentation/) -- Slide Deck
 
 17 slides covering the conceptual foundations:
@@ -57,19 +73,15 @@ export BLOCKFROST_API_KEY=preprodYourKeyHere
 
 Or edit `java/src/main/resources/application.yml` directly.
 
-### 3. Run
+### 3. Run the Java project
 
 ```bash
 cd java
 mvn spring-boot:run
 ```
 
-### 4. Explore
-
 - Swagger UI: [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html)
 - API docs: [http://localhost:8080/api-docs](http://localhost:8080/api-docs)
-
-### 5. Try it
 
 ```bash
 # Create a wallet
@@ -78,6 +90,20 @@ curl -X POST http://localhost:8080/api/wallet/create
 # Check balance (paste the address from above)
 curl http://localhost:8080/api/wallet/{address}/balance
 ```
+
+### 4. Run the React project
+
+```bash
+cd react
+npm install
+npm run dev
+```
+
+Open [http://localhost:5173](http://localhost:5173), connect your wallet, and try sending ADA or minting tokens.
+
+**Prerequisite:** A Cardano browser wallet extension on preprod (e.g. [Nami](https://namiwallet.io/), [Eternl](https://eternl.io/), [Lace](https://www.lace.io/)).
+
+### 5. Get test ADA
 
 Fund your testnet address via the [Cardano faucet](https://docs.cardano.org/cardano-testnets/tools/faucet/), then try sending ADA and minting tokens.
 

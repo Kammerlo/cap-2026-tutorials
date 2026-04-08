@@ -6,7 +6,7 @@ Developer tutorials for building on Cardano. Each module covers a specific topic
 
 | Module | Description | Languages |
 |--------|-------------|-----------|
-| [tx-building](tx-building/) | Transaction building fundamentals: EUTXO model, ADA transfers, native token minting | Java (Spring Boot) |
+| [tx-building](tx-building/) | Transaction building fundamentals: EUTXO model, ADA transfers, native token minting | Java (Spring Boot), TypeScript (React + MeshJS) |
 
 ## Prerequisites
 
@@ -21,6 +21,7 @@ Each module follows a consistent structure:
 ```
 <module>/
   java/           Code project (Spring Boot + cardano-client-lib)
+  react/          Code project (React + MeshJS)
   presentation/   Slide deck content and generation scripts
   README.md       Module-specific instructions
 ```
