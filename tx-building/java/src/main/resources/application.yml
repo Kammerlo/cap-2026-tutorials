@@ -1,0 +1,16 @@
+server:
+  port: 8080
+
+cardano:
+  # Network: mainnet, preprod, preview
+  network: preprod
+  # Blockfrost API key - get yours at https://blockfrost.io
+  blockfrost:
+    api-key: ${BLOCKFROST_API_KEY:preprodxSXUegqAOFrDSs6sUvyboxdEwSJoOfbB}
+    base-url: https://cardano-preprod.blockfrost.io/api/v0/
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+  api-docs:
+    path: /api-docs
