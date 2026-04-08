@@ -6,7 +6,8 @@
 .claude/
 
 # Java
-tx-building/java/target/
+**/target/
+data/
 
 # React / Node
 node_modules/

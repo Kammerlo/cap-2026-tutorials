@@ -1,0 +1,78 @@
+server:
+  port: 8081
+
+# -------------------------------------------------------
+# Yaci Store Configuration
+# Connects to the local Yaci DevKit Cardano node
+# and indexes blockchain data into PostgreSQL.
+# -------------------------------------------------------
+store:
+  cardano:
+    # Cardano node connection (Yaci DevKit defaults)
+    host: localhost
+    port: 3001
+    protocol-magic: 42   # Yaci DevKit local devnet magic
+
+    # Optional: Ogmios & Submit API (provided by DevKit)
+    ogmios-url: http://localhost:1337
+    submit-api-url: http://localhost:8090/api/submit/tx
+
+  # Enable the store modules we want to index
+  blocks:
+    enabled: true
+  utxo:
+    enabled: true
+  assets:
+    enabled: true
+  metadata:
+    enabled: true
+  live:
+    enabled: true
+
+# -------------------------------------------------------
+# Database: PostgreSQL (from docker-compose)
+# Switch to H2 profile for quick local testing:
+#   mvn spring-boot:run -Dspring-boot.run.profiles=h2
+# -------------------------------------------------------
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/indexer
+    username: indexer
+    password: indexer
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        jdbc:
+          batch_size: 20
+        order_inserts: true
+
+  # Disable Spring Batch auto-start (used internally by yaci-store)
+  batch:
+    job:
+      enabled: false
+
+# Swagger UI
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+  api-docs:
+    path: /api-docs
+
+---
+# H2 profile for quick testing without PostgreSQL
+spring:
+  config:
+    activate:
+      on-profile: h2
+  datasource:
+    url: jdbc:h2:file:./data/indexer;MV_STORE=TRUE;AUTO_SERVER=TRUE;AUTO_RECONNECT=TRUE
+    username: sa
+    password: password
+    driver-class-name: org.h2.Driver
+  h2:
+    console:
+      enabled: true
+      path: /h2-console

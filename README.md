@@ -7,12 +7,14 @@ Developer tutorials for building on Cardano. Each module covers a specific topic
 | Module | Description | Languages |
 |--------|-------------|-----------|
 | [tx-building](tx-building/) | Transaction building fundamentals: EUTXO model, ADA transfers, native token minting | Java (Spring Boot), TypeScript (React + MeshJS) |
+| [indexing](indexing/) | Blockchain data indexing with Yaci Store: local devnet, block/tx/UTXO/asset indexing | Java (Spring Boot + Yaci Store), Docker |
 
 ## Prerequisites
 
 - Basic programming knowledge
-- A Blockfrost API key (free at [blockfrost.io](https://blockfrost.io))
-- Access to Cardano preprod testnet (get test ADA from the [faucet](https://docs.cardano.org/cardano-testnets/tools/faucet/))
+- A Blockfrost API key (free at [blockfrost.io](https://blockfrost.io)) -- for tx-building module
+- Access to Cardano preprod testnet (get test ADA from the [faucet](https://docs.cardano.org/cardano-testnets/tools/faucet/)) -- for tx-building module
+- Docker & Docker Compose -- for indexing module
 
 ## Structure
 
