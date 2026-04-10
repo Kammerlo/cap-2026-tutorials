@@ -1,0 +1,9 @@
+name = "cardano-tutorial/smart-contracts"
+version = "0.1.0"
+description = "Smart contracts tutorial: hello world and CIP-68 tokens"
+license = "Apache-2.0"
+
+[[dependencies]]
+name = "aiken-lang/stdlib"
+version = "v3.0.0"
+source = "github"

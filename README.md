@@ -7,6 +7,7 @@ Developer tutorials for building on Cardano. Each module covers a specific topic
 | Module | Description | Languages |
 |--------|-------------|-----------|
 | [tx-building](tx-building/) | Transaction building fundamentals: EUTXO model, ADA transfers, native token minting | Java (Spring Boot), TypeScript (React + MeshJS) |
+| [smart-contracts](smart-contracts/) | Smart contracts with Aiken: hello world validator, CIP-68 token metadata, on-chain data | Aiken, Java (Spring Boot) |
 
 ## Prerequisites
 
