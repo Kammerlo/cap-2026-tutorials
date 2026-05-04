@@ -1,0 +1,9 @@
+name = "cardano-tutorial/validator-design-patterns"
+version = "0.1.0"
+description = "Demos of common Aiken validator design patterns"
+license = "Apache-2.0"
+
+[[dependencies]]
+name = "aiken-lang/stdlib"
+version = "v3.0.0"
+source = "github"

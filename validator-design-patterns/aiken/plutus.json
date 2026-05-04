@@ -1,0 +1,669 @@
+{
+  "preamble": {
+    "title": "cardano-tutorial/validator-design-patterns",
+    "description": "Demos of common Aiken validator design patterns",
+    "version": "0.1.0",
+    "plutusVersion": "v3",
+    "compiler": {
+      "name": "Aiken",
+      "version": "v1.1.21+42babe5"
+    },
+    "license": "Apache-2.0"
+  },
+  "validators": [
+    {
+      "title": "one_shot_nft.one_shot_nft.mint",
+      "redeemer": {
+        "title": "_redeemer",
+        "schema": {
+          "$ref": "#/definitions/Data"
+        }
+      },
+      "parameters": [
+        {
+          "title": "seed",
+          "schema": {
+            "$ref": "#/definitions/cardano~1transaction~1OutputReference"
+          }
+        },
+        {
+          "title": "asset_name",
+          "schema": {
+            "$ref": "#/definitions/ByteArray"
+          }
+        }
+      ],
+      "compiledCode": "5901240101002229800aba2aba1aab9faab9eaab9dab9a9bae002488888896600264653001300800198041804800cc0200092225980099b8748000c020dd500144c96600264660020026eb0c034c02cdd5001912cc00400629422b30013375e601c60186ea8c03800404a2946266004004601e002805100d44cc89660020030028acc004c03c006264b30013371e6eb8c03000402a266e1cdd69806800a400514a08058c038006004806900d0a503232330010013756601c601e601e601e601e60186ea8010896600200300389919912cc004cdc8803801456600266e3c01c00a20030064039133005005301300440386eb8c034004dd598070009807800a01c14bd6f7b63045282010375c601660126ea800a29410070c020004c010dd5004452689b2b200401",
+      "hash": "ea1779af1fb32b22a7fb27af96d61ed9c67c0e07f5a3fd29503e360a"
+    },
+    {
+      "title": "one_shot_nft.one_shot_nft.else",
+      "redeemer": {
+        "schema": {}
+      },
+      "parameters": [
+        {
+          "title": "seed",
+          "schema": {
+            "$ref": "#/definitions/cardano~1transaction~1OutputReference"
+          }
+        },
+        {
+          "title": "asset_name",
+          "schema": {
+            "$ref": "#/definitions/ByteArray"
+          }
+        }
+      ],
+      "compiledCode": "5901240101002229800aba2aba1aab9faab9eaab9dab9a9bae002488888896600264653001300800198041804800cc0200092225980099b8748000c020dd500144c96600264660020026eb0c034c02cdd5001912cc00400629422b30013375e601c60186ea8c03800404a2946266004004601e002805100d44cc89660020030028acc004c03c006264b30013371e6eb8c03000402a266e1cdd69806800a400514a08058c038006004806900d0a503232330010013756601c601e601e601e601e60186ea8010896600200300389919912cc004cdc8803801456600266e3c01c00a20030064039133005005301300440386eb8c034004dd598070009807800a01c14bd6f7b63045282010375c601660126ea800a29410070c020004c010dd5004452689b2b200401",
+      "hash": "ea1779af1fb32b22a7fb27af96d61ed9c67c0e07f5a3fd29503e360a"
+    },
+    {
+      "title": "oracle.oracle_feed.spend",
+      "datum": {
+        "title": "datum",
+        "schema": {
+          "$ref": "#/definitions/oracle~1FeedDatum"
+        }
+      },
+      "redeemer": {
+        "title": "_action",
+        "schema": {
+          "$ref": "#/definitions/oracle~1FeedAction"
+        }
+      },
+      "parameters": [
+        {
+          "title": "operator",
+          "schema": {
+            "$ref": "#/definitions/aiken~1crypto~1VerificationKeyHash"
+          }
+        },
+        {
+          "title": "feed_policy",
+          "schema": {
+            "$ref": "#/definitions/cardano~1assets~1PolicyId"
+          }
+        },
+        {
+          "title": "feed_token",
+          "schema": {
+            "$ref": "#/definitions/ByteArray"
+          }
+        }
+      ],
+      "compiledCode": "59029901010022229800aba2aba1aba0aab9faab9eaab9dab9a9bae0049bae0039bae002488888888896600264653001300b00198059806000cc02c0092225980099b8748008c028dd500144c8cc89660026002601a6ea801a2b3001300e375400d159800980098069baa301130120038acc004c8cc004004dd618091809980998099809980998099809980998079baa0052259800800c528456600266e3cdd71809800806c528c4cc008008c05000500e20228992cc004c008c038dd5000c4c8cc88c966002602e0031325980099b8748010c04cdd5000c4c966002601060286ea8006264646644b3001301d0038a518b2034375a60340026eb4c068008c068004c054dd5000c59013180b980a1baa0018a504048600460266ea8c0580062c80a0c8cc004004dd6180118099baa0092259800800c52f5c11332259800acc004cdd7980c980b1baa002006899b87323322330020020012259800800c00e2646644b30013372202e00515980099b8f0170028800c01901a44cc014014c08001101a1bae3019001375a6034002603800280d0c8c8cc004004dd59805180c9baa0052259800800c00e2646644b30013372203200515980099b8f0190028800c01901b44cc014014c08401101b1bae301a00137566036002603a00280d852f5bded8c0290002400514a080a2266030004660080080031330040040014050602e002603000280a8c04cc040dd5180098081baa30133010375400446028602a602a00246026602800316403464660020026eb0c048c03cdd5002912cc0040062980103d87a80008992cc004cdd7980a18089baa001005899ba548000cc04c0052f5c11330030033015002403c6026002808a2c80622c80622c807a2c8060c03c004dc3a400060166ea800a29410090c02c004c018dd5005c52689b2b200801",
+      "hash": "e2016641b334bb3733db8af701c1a72fdde5c7bece859932074dc925"
+    },
+    {
+      "title": "oracle.oracle_feed.else",
+      "redeemer": {
+        "schema": {}
+      },
+      "parameters": [
+        {
+          "title": "operator",
+          "schema": {
+            "$ref": "#/definitions/aiken~1crypto~1VerificationKeyHash"
+          }
+        },
+        {
+          "title": "feed_policy",
+          "schema": {
+            "$ref": "#/definitions/cardano~1assets~1PolicyId"
+          }
+        },
+        {
+          "title": "feed_token",
+          "schema": {
+            "$ref": "#/definitions/ByteArray"
+          }
+        }
+      ],
+      "compiledCode": "59029901010022229800aba2aba1aba0aab9faab9eaab9dab9a9bae0049bae0039bae002488888888896600264653001300b00198059806000cc02c0092225980099b8748008c028dd500144c8cc89660026002601a6ea801a2b3001300e375400d159800980098069baa301130120038acc004c8cc004004dd618091809980998099809980998099809980998079baa0052259800800c528456600266e3cdd71809800806c528c4cc008008c05000500e20228992cc004c008c038dd5000c4c8cc88c966002602e0031325980099b8748010c04cdd5000c4c966002601060286ea8006264646644b3001301d0038a518b2034375a60340026eb4c068008c068004c054dd5000c59013180b980a1baa0018a504048600460266ea8c0580062c80a0c8cc004004dd6180118099baa0092259800800c52f5c11332259800acc004cdd7980c980b1baa002006899b87323322330020020012259800800c00e2646644b30013372202e00515980099b8f0170028800c01901a44cc014014c08001101a1bae3019001375a6034002603800280d0c8c8cc004004dd59805180c9baa0052259800800c00e2646644b30013372203200515980099b8f0190028800c01901b44cc014014c08401101b1bae301a00137566036002603a00280d852f5bded8c0290002400514a080a2266030004660080080031330040040014050602e002603000280a8c04cc040dd5180098081baa30133010375400446028602a602a00246026602800316403464660020026eb0c048c03cdd5002912cc0040062980103d87a80008992cc004cdd7980a18089baa001005899ba548000cc04c0052f5c11330030033015002403c6026002808a2c80622c80622c807a2c8060c03c004dc3a400060166ea800a29410090c02c004c018dd5005c52689b2b200801",
+      "hash": "e2016641b334bb3733db8af701c1a72fdde5c7bece859932074dc925"
+    },
+    {
+      "title": "oracle.price_consumer.spend",
+      "datum": {
+        "title": "datum",
+        "schema": {
+          "$ref": "#/definitions/oracle~1ConsumerDatum"
+        }
+      },
+      "redeemer": {
+        "title": "_action",
+        "schema": {
+          "$ref": "#/definitions/oracle~1ConsumerAction"
+        }
+      },
+      "parameters": [
+        {
+          "title": "oracle_addr",
+          "schema": {
+            "$ref": "#/definitions/cardano~1address~1Address"
+          }
+        },
+        {
+          "title": "feed_policy",
+          "schema": {
+            "$ref": "#/definitions/cardano~1assets~1PolicyId"
+          }
+        },
+        {
+          "title": "feed_token",
+          "schema": {
+            "$ref": "#/definitions/ByteArray"
+          }
+        }
+      ],
+      "compiledCode": "59028a01010022229800aba2aba1aba0aab9faab9eaab9dab9a9bae0039bae00248888888896600264653001300a00198051805800cc0280092225980099b8748008c024dd500144ca6002601c003300e300f0019b874800122259800980098069baa0078acc004c038dd5003c5660026002601a6ea800a26644b3001323322330020020012259800800c528456600266e3cdd7180b000801c528c4cc008008c05c005011202837586028602a602a602a602a602a602a602a602a60226ea8020dd7180098081baa002899192cc004c014c044dd5000c4c96600266e1d20043012375400313259800980398099baa0018991919912cc004c07000e2b3001337126eb4c06cc060dd50051bad301b3018375400b13371090001bad30083018375400b14a080b22c80c8dd6980c8009bad3019002301900130143754003164048602c60266ea80062c8088c00cc048dd5180118091baa30153012375400316404064660020026eb0c008c048dd5004912cc0040062980103d87a80008992cc0056600266ebcc05cc050dd51802180a1baa00101c899b87323322330020020012259800800c00e2646644b30013372202c00515980099b8f0160028800c01901844cc014014c0780110181bae3017001375a6030002603400280c0c8c8cc004004dd59803980b9baa30073017375400844b3001001801c4c8cc896600266e4406000a2b30013371e03000510018032032899802802980f8022032375c60300026eacc064004c06c0050190a5eb7bdb180520004800a294101244cdd2a40006602c00297ae0899801801980c00120243016001405046028602a0031640386022601c6ea80088c048c04cc04c0062c80622c807a2c806060146ea800a29410080c028004c014dd5005452689b2b200601",
+      "hash": "3fdcd702585eb1a03f4fb1c12923852cbc0f333b7bdae33b8acd5306"
+    },
+    {
+      "title": "oracle.price_consumer.else",
+      "redeemer": {
+        "schema": {}
+      },
+      "parameters": [
+        {
+          "title": "oracle_addr",
+          "schema": {
+            "$ref": "#/definitions/cardano~1address~1Address"
+          }
+        },
+        {
+          "title": "feed_policy",
+          "schema": {
+            "$ref": "#/definitions/cardano~1assets~1PolicyId"
+          }
+        },
+        {
+          "title": "feed_token",
+          "schema": {
+            "$ref": "#/definitions/ByteArray"
+          }
+        }
+      ],
+      "compiledCode": "59028a01010022229800aba2aba1aba0aab9faab9eaab9dab9a9bae0039bae00248888888896600264653001300a00198051805800cc0280092225980099b8748008c024dd500144ca6002601c003300e300f0019b874800122259800980098069baa0078acc004c038dd5003c5660026002601a6ea800a26644b3001323322330020020012259800800c528456600266e3cdd7180b000801c528c4cc008008c05c005011202837586028602a602a602a602a602a602a602a602a60226ea8020dd7180098081baa002899192cc004c014c044dd5000c4c96600266e1d20043012375400313259800980398099baa0018991919912cc004c07000e2b3001337126eb4c06cc060dd50051bad301b3018375400b13371090001bad30083018375400b14a080b22c80c8dd6980c8009bad3019002301900130143754003164048602c60266ea80062c8088c00cc048dd5180118091baa30153012375400316404064660020026eb0c008c048dd5004912cc0040062980103d87a80008992cc0056600266ebcc05cc050dd51802180a1baa00101c899b87323322330020020012259800800c00e2646644b30013372202c00515980099b8f0160028800c01901844cc014014c0780110181bae3017001375a6030002603400280c0c8c8cc004004dd59803980b9baa30073017375400844b3001001801c4c8cc896600266e4406000a2b30013371e03000510018032032899802802980f8022032375c60300026eacc064004c06c0050190a5eb7bdb180520004800a294101244cdd2a40006602c00297ae0899801801980c00120243016001405046028602a0031640386022601c6ea80088c048c04cc04c0062c80622c807a2c806060146ea800a29410080c028004c014dd5005452689b2b200601",
+      "hash": "3fdcd702585eb1a03f4fb1c12923852cbc0f333b7bdae33b8acd5306"
+    },
+    {
+      "title": "state_machine.state_machine.mint",
+      "redeemer": {
+        "title": "action",
+        "schema": {
+          "$ref": "#/definitions/state_machine~1MintAction"
+        }
+      },
+      "compiledCode": "59071e01010029800aba2aba1aba0aab9faab9eaab9dab9a4888888966003300130033754011370e90004dc3a4005370e900248c01cc0200064464646600200200844b3001001801c4c8cc896600266e4401c00a2b30013371e00e0051001803201289980280298078022012375c60100026eacc024004c02c0050090a5eb7bdb1824600e6010601000291111114c004c03801e601a00f2259800980418059baa002899191919912cc004c05400e26464b3001300f0018acc004c04cdd500140222c80a22b3001300e0018acc004c04cdd500140222c80a22b3001300d0018acc004c04cdd500140222c80a22c8089011202230113754002602800b1640486eb8c048004dd698090011809000980880098061baa0028b201491119199119801001000912cc00400600713233225980099b910070028acc004cdc78038014400600c808a26600a00a602e0088088dd718080009bad3011001301300140446600c0080062900024444646644b3001300d00289919912cc004c040006264b300130190018992cc004c048c054dd5000c4c8c8cc8966002603c0070088b2036375a60360026eb8c06c008c06c004c058dd5000c59014180c000c59016180a1baa0048acc004c03c0062b3001301437540090028b202a8b20244048264b3001300f3012375400719800980b18099baa003911919800800801912cc00400629422b30013003301a0018a51899801001180d800a02a40613374a90001980a99ba548008cc054dd480125eb80cc055300103d87a80004bd702444b30013300237586032602c6ea802c8cdd7980d180b9baa0010048acc004cc89660020030028acc004c070006264b30013371e6eb8c060005221055354415445008980a1bad30190018a50405c6036003002406480c8528198071bab30043016375401600b1330023758601a602c6ea802c96600266ebcc068c05cdd500080145660026025300137566020602e6ea800600d4881055354415445004029132598009809180b9baa001899198068008acc004cdd7980e180c9baa0014c0103d87980008980a9bad30123019375400314a080b8c06cc060dd5000c528202c300e3017375400314a080aa2941015452820288a504050899912cc004006005159800980c800c4c96600266e3cdd7180a800a44105535441544500899b87375a602c0029000c52820283018001801202c40582940cc02cdd5980098099baa00800240444602c602e602e602e602e00260226ea8008dd7180a18089baa0038acc004c03000a26466446644b300130120018acc004c058dd5003400a2c80ba2b300130110018acc004c058dd5003400a2c80ba2b300130100018acc004c058dd5003400a2c80ba2c80a10142028159800980818099baa0018992cc004c8cc88cc008008004896600200314a115980099b8f375c603600200714a3133002002301c001405880c8dd6180c980d180d180d180d180d180d180d180d180b1baa00b375c6018602a6ea8006264b300130123015375400313232598009809980b9baa0018cc004dd7180d980c1baa001911192cc004c0800062603e003164074646600200200844b30010018a5eb8226644b30015980099baf3022301f375400400d1301a98009bab3018301f3754005005a4505535441544500404914a080ea2660420046600800800313300400400140746040002604200280f2602e6ea80226ebd30103d87a80004888966002603000515980099baf301f301c375401098103d87980008992cc004c05cc070dd5000c4c8cc04800456600260066042603c6ea80062b3001301a375a602e603c6ea8006266e3cdd7180a980f1baa001375c602a603c6ea802a294101c452820383020301d375400316406c602660386eaa60026eb0c04cc070dd5008c01a008801a2c80d22b300130170028acc004c004c07cc070dd500444c966002602e60386ea8006264660240022b300130033021301e375400315980099b87375a602e603c6ea8004cdc01bad3017301e3754014900144cdc79bae3015301e37540026eb8c054c078dd5005452820388a5040706040603a6ea80062c80d8c04cc070dd54c004dd61809980e1baa011803401100345901a45660026002603e60386ea8022264b30013017301c37540031323301200115980099baf3021301e3754002980103d87b80008acc004cdc39bad3017301e37540026eb4c05cc078dd500544cdc79bae3015301e37540026eb8c054c078dd5005452820388a5040706040603a6ea80062c80d8c04cc070dd54c004dd61809980e1baa011803401100345901a203440688b202c301a301737540026032602c6ea8c03cc058dd5180c980b1baa0018b2028323300100137586032602c6ea802c896600200314c103d87a80008992cc004cdd7980d980c1baa001006899ba548000cc0680052f5c1133003003301c0024058603400280c22c8098c05cc050dd5000c5901218099baa0043015001301530160013011375400714a0807900f18071baa001301200530113012004229344d9590011",
+      "hash": "c59d258007126be3b9c0e14f8464c0f6c33a97ba386329590fe8d4fd"
+    },
+    {
+      "title": "state_machine.state_machine.spend",
+      "datum": {
+        "title": "datum",
+        "schema": {
+          "$ref": "#/definitions/state_machine~1Counter"
+        }
+      },
+      "redeemer": {
+        "title": "action",
+        "schema": {
+          "$ref": "#/definitions/state_machine~1StepAction"
+        }
+      },
+      "compiledCode": "59071e01010029800aba2aba1aba0aab9faab9eaab9dab9a4888888966003300130033754011370e90004dc3a4005370e900248c01cc0200064464646600200200844b3001001801c4c8cc896600266e4401c00a2b30013371e00e0051001803201289980280298078022012375c60100026eacc024004c02c0050090a5eb7bdb1824600e6010601000291111114c004c03801e601a00f2259800980418059baa002899191919912cc004c05400e26464b3001300f0018acc004c04cdd500140222c80a22b3001300e0018acc004c04cdd500140222c80a22b3001300d0018acc004c04cdd500140222c80a22c8089011202230113754002602800b1640486eb8c048004dd698090011809000980880098061baa0028b201491119199119801001000912cc00400600713233225980099b910070028acc004cdc78038014400600c808a26600a00a602e0088088dd718080009bad3011001301300140446600c0080062900024444646644b3001300d00289919912cc004c040006264b300130190018992cc004c048c054dd5000c4c8c8cc8966002603c0070088b2036375a60360026eb8c06c008c06c004c058dd5000c59014180c000c59016180a1baa0048acc004c03c0062b3001301437540090028b202a8b20244048264b3001300f3012375400719800980b18099baa003911919800800801912cc00400629422b30013003301a0018a51899801001180d800a02a40613374a90001980a99ba548008cc054dd480125eb80cc055300103d87a80004bd702444b30013300237586032602c6ea802c8cdd7980d180b9baa0010048acc004cc89660020030028acc004c070006264b30013371e6eb8c060005221055354415445008980a1bad30190018a50405c6036003002406480c8528198071bab30043016375401600b1330023758601a602c6ea802c96600266ebcc068c05cdd500080145660026025300137566020602e6ea800600d4881055354415445004029132598009809180b9baa001899198068008acc004cdd7980e180c9baa0014c0103d87980008980a9bad30123019375400314a080b8c06cc060dd5000c528202c300e3017375400314a080aa2941015452820288a504050899912cc004006005159800980c800c4c96600266e3cdd7180a800a44105535441544500899b87375a602c0029000c52820283018001801202c40582940cc02cdd5980098099baa00800240444602c602e602e602e602e00260226ea8008dd7180a18089baa0038acc004c03000a26466446644b300130120018acc004c058dd5003400a2c80ba2b300130110018acc004c058dd5003400a2c80ba2b300130100018acc004c058dd5003400a2c80ba2c80a10142028159800980818099baa0018992cc004c8cc88cc008008004896600200314a115980099b8f375c603600200714a3133002002301c001405880c8dd6180c980d180d180d180d180d180d180d180d180b1baa00b375c6018602a6ea8006264b300130123015375400313232598009809980b9baa0018cc004dd7180d980c1baa001911192cc004c0800062603e003164074646600200200844b30010018a5eb8226644b30015980099baf3022301f375400400d1301a98009bab3018301f3754005005a4505535441544500404914a080ea2660420046600800800313300400400140746040002604200280f2602e6ea80226ebd30103d87a80004888966002603000515980099baf301f301c375401098103d87980008992cc004c05cc070dd5000c4c8cc04800456600260066042603c6ea80062b3001301a375a602e603c6ea8006266e3cdd7180a980f1baa001375c602a603c6ea802a294101c452820383020301d375400316406c602660386eaa60026eb0c04cc070dd5008c01a008801a2c80d22b300130170028acc004c004c07cc070dd500444c966002602e60386ea8006264660240022b300130033021301e375400315980099b87375a602e603c6ea8004cdc01bad3017301e3754014900144cdc79bae3015301e37540026eb8c054c078dd5005452820388a5040706040603a6ea80062c80d8c04cc070dd54c004dd61809980e1baa011803401100345901a45660026002603e60386ea8022264b30013017301c37540031323301200115980099baf3021301e3754002980103d87b80008acc004cdc39bad3017301e37540026eb4c05cc078dd500544cdc79bae3015301e37540026eb8c054c078dd5005452820388a5040706040603a6ea80062c80d8c04cc070dd54c004dd61809980e1baa011803401100345901a203440688b202c301a301737540026032602c6ea8c03cc058dd5180c980b1baa0018b2028323300100137586032602c6ea802c896600200314c103d87a80008992cc004cdd7980d980c1baa001006899ba548000cc0680052f5c1133003003301c0024058603400280c22c8098c05cc050dd5000c5901218099baa0043015001301530160013011375400714a0807900f18071baa001301200530113012004229344d9590011",
+      "hash": "c59d258007126be3b9c0e14f8464c0f6c33a97ba386329590fe8d4fd"
+    },
+    {
+      "title": "state_machine.state_machine.else",
+      "redeemer": {
+        "schema": {}
+      },
+      "compiledCode": "59071e01010029800aba2aba1aba0aab9faab9eaab9dab9a4888888966003300130033754011370e90004dc3a4005370e900248c01cc0200064464646600200200844b3001001801c4c8cc896600266e4401c00a2b30013371e00e0051001803201289980280298078022012375c60100026eacc024004c02c0050090a5eb7bdb1824600e6010601000291111114c004c03801e601a00f2259800980418059baa002899191919912cc004c05400e26464b3001300f0018acc004c04cdd500140222c80a22b3001300e0018acc004c04cdd500140222c80a22b3001300d0018acc004c04cdd500140222c80a22c8089011202230113754002602800b1640486eb8c048004dd698090011809000980880098061baa0028b201491119199119801001000912cc00400600713233225980099b910070028acc004cdc78038014400600c808a26600a00a602e0088088dd718080009bad3011001301300140446600c0080062900024444646644b3001300d00289919912cc004c040006264b300130190018992cc004c048c054dd5000c4c8c8cc8966002603c0070088b2036375a60360026eb8c06c008c06c004c058dd5000c59014180c000c59016180a1baa0048acc004c03c0062b3001301437540090028b202a8b20244048264b3001300f3012375400719800980b18099baa003911919800800801912cc00400629422b30013003301a0018a51899801001180d800a02a40613374a90001980a99ba548008cc054dd480125eb80cc055300103d87a80004bd702444b30013300237586032602c6ea802c8cdd7980d180b9baa0010048acc004cc89660020030028acc004c070006264b30013371e6eb8c060005221055354415445008980a1bad30190018a50405c6036003002406480c8528198071bab30043016375401600b1330023758601a602c6ea802c96600266ebcc068c05cdd500080145660026025300137566020602e6ea800600d4881055354415445004029132598009809180b9baa001899198068008acc004cdd7980e180c9baa0014c0103d87980008980a9bad30123019375400314a080b8c06cc060dd5000c528202c300e3017375400314a080aa2941015452820288a504050899912cc004006005159800980c800c4c96600266e3cdd7180a800a44105535441544500899b87375a602c0029000c52820283018001801202c40582940cc02cdd5980098099baa00800240444602c602e602e602e602e00260226ea8008dd7180a18089baa0038acc004c03000a26466446644b300130120018acc004c058dd5003400a2c80ba2b300130110018acc004c058dd5003400a2c80ba2b300130100018acc004c058dd5003400a2c80ba2c80a10142028159800980818099baa0018992cc004c8cc88cc008008004896600200314a115980099b8f375c603600200714a3133002002301c001405880c8dd6180c980d180d180d180d180d180d180d180d180b1baa00b375c6018602a6ea8006264b300130123015375400313232598009809980b9baa0018cc004dd7180d980c1baa001911192cc004c0800062603e003164074646600200200844b30010018a5eb8226644b30015980099baf3022301f375400400d1301a98009bab3018301f3754005005a4505535441544500404914a080ea2660420046600800800313300400400140746040002604200280f2602e6ea80226ebd30103d87a80004888966002603000515980099baf301f301c375401098103d87980008992cc004c05cc070dd5000c4c8cc04800456600260066042603c6ea80062b3001301a375a602e603c6ea8006266e3cdd7180a980f1baa001375c602a603c6ea802a294101c452820383020301d375400316406c602660386eaa60026eb0c04cc070dd5008c01a008801a2c80d22b300130170028acc004c004c07cc070dd500444c966002602e60386ea8006264660240022b300130033021301e375400315980099b87375a602e603c6ea8004cdc01bad3017301e3754014900144cdc79bae3015301e37540026eb8c054c078dd5005452820388a5040706040603a6ea80062c80d8c04cc070dd54c004dd61809980e1baa011803401100345901a45660026002603e60386ea8022264b30013017301c37540031323301200115980099baf3021301e3754002980103d87b80008acc004cdc39bad3017301e37540026eb4c05cc078dd500544cdc79bae3015301e37540026eb8c054c078dd5005452820388a5040706040603a6ea80062c80d8c04cc070dd54c004dd61809980e1baa011803401100345901a203440688b202c301a301737540026032602c6ea8c03cc058dd5180c980b1baa0018b2028323300100137586032602c6ea802c896600200314c103d87a80008992cc004cdd7980d980c1baa001006899ba548000cc0680052f5c1133003003301c0024058603400280c22c8098c05cc050dd5000c5901218099baa0043015001301530160013011375400714a0807900f18071baa001301200530113012004229344d9590011",
+      "hash": "c59d258007126be3b9c0e14f8464c0f6c33a97ba386329590fe8d4fd"
+    },
+    {
+      "title": "withdraw_zero.batch_authority.withdraw",
+      "redeemer": {
+        "title": "redeemer",
+        "schema": {
+          "$ref": "#/definitions/withdraw_zero~1BatchAction"
+        }
+      },
+      "compiledCode": "589701010029800aba2aba1aab9faab9eaab9dab9a48888896600264646644b30013370e900218031baa0018992cc004cdc3a4000600e6ea800e2b300130083754007133710900019198008009bac300b30093754601600c44b30010018a40011337009001198010011806800a0168b20128b200c30093007375400314a08028c01c004c01cc020004c01c004c00cdd5003c52689b2b200201",
+      "hash": "cf08200d6f0760d99a6ac4d17e72f36240c110128bd83733f6164097"
+    },
+    {
+      "title": "withdraw_zero.batch_authority.else",
+      "redeemer": {
+        "schema": {}
+      },
+      "compiledCode": "589701010029800aba2aba1aab9faab9eaab9dab9a48888896600264646644b30013370e900218031baa0018992cc004cdc3a4000600e6ea800e2b300130083754007133710900019198008009bac300b30093754601600c44b30010018a40011337009001198010011806800a0168b20128b200c30093007375400314a08028c01c004c01cc020004c01c004c00cdd5003c52689b2b200201",
+      "hash": "cf08200d6f0760d99a6ac4d17e72f36240c110128bd83733f6164097"
+    },
+    {
+      "title": "withdraw_zero.order.spend",
+      "datum": {
+        "title": "datum",
+        "schema": {
+          "$ref": "#/definitions/withdraw_zero~1Order"
+        }
+      },
+      "redeemer": {
+        "title": "_redeemer",
+        "schema": {
+          "$ref": "#/definitions/Data"
+        }
+      },
+      "parameters": [
+        {
+          "title": "batch_authority_hash",
+          "schema": {
+            "$ref": "#/definitions/ByteArray"
+          }
+        }
+      ],
+      "compiledCode": "58e1010100229800aba2aba1aba0aab9faab9eaab9dab9a9bae0024888888896600264646644b30013370e900118039baa001899192cc004cdc3a400060126ea8c034c03800a2b30013370e900018049baa323322330020020012259800800c5300103d87a80008992cc004cdd78021806800c4cdd2a400066020601c00297ae089980180198090012018301000140386eacc038c03cc03cc03cc03cc03cc03cc02cdd5180700399ba548008cc030dd4803a5eb8229462941008459008180600098041baa0018a504018601200260126014002601200260086ea802629344d95900201",
+      "hash": "a59b67beb5c31e3cdd55de8478984c5bd44f715410551b46a8ac109d"
+    },
+    {
+      "title": "withdraw_zero.order.else",
+      "redeemer": {
+        "schema": {}
+      },
+      "parameters": [
+        {
+          "title": "batch_authority_hash",
+          "schema": {
+            "$ref": "#/definitions/ByteArray"
+          }
+        }
+      ],
+      "compiledCode": "58e1010100229800aba2aba1aba0aab9faab9eaab9dab9a9bae0024888888896600264646644b30013370e900118039baa001899192cc004cdc3a400060126ea8c034c03800a2b30013370e900018049baa323322330020020012259800800c5300103d87a80008992cc004cdd78021806800c4cdd2a400066020601c00297ae089980180198090012018301000140386eacc038c03cc03cc03cc03cc03cc03cc02cdd5180700399ba548008cc030dd4803a5eb8229462941008459008180600098041baa0018a504018601200260126014002601200260086ea802629344d95900201",
+      "hash": "a59b67beb5c31e3cdd55de8478984c5bd44f715410551b46a8ac109d"
+    }
+  ],
+  "definitions": {
+    "ByteArray": {
+      "dataType": "bytes"
+    },
+    "Data": {
+      "title": "Data",
+      "description": "Any Plutus data."
+    },
+    "Int": {
+      "dataType": "integer"
+    },
+    "Option<cardano/address/StakeCredential>": {
+      "title": "Option",
+      "anyOf": [
+        {
+          "title": "Some",
+          "description": "An optional value.",
+          "dataType": "constructor",
+          "index": 0,
+          "fields": [
+            {
+              "$ref": "#/definitions/cardano~1address~1StakeCredential"
+            }
+          ]
+        },
+        {
+          "title": "None",
+          "description": "Nothing.",
+          "dataType": "constructor",
+          "index": 1,
+          "fields": []
+        }
+      ]
+    },
+    "aiken/crypto/ScriptHash": {
+      "title": "ScriptHash",
+      "dataType": "bytes"
+    },
+    "aiken/crypto/VerificationKeyHash": {
+      "title": "VerificationKeyHash",
+      "dataType": "bytes"
+    },
+    "cardano/address/Address": {
+      "title": "Address",
+      "description": "A Cardano `Address` typically holding one or two credential references.\n\n Note that legacy bootstrap addresses (a.k.a. 'Byron addresses') are\n completely excluded from Plutus contexts. Thus, from an on-chain\n perspective only exists addresses of type 00, 01, ..., 07 as detailed\n in [CIP-0019 :: Shelley Addresses](https://github.com/cardano-foundation/CIPs/tree/master/CIP-0019/#shelley-addresses).",
+      "anyOf": [
+        {
+          "title": "Address",
+          "dataType": "constructor",
+          "index": 0,
+          "fields": [
+            {
+              "title": "payment_credential",
+              "$ref": "#/definitions/cardano~1address~1PaymentCredential"
+            },
+            {
+              "title": "stake_credential",
+              "$ref": "#/definitions/Option<cardano~1address~1StakeCredential>"
+            }
+          ]
+        }
+      ]
+    },
+    "cardano/address/Credential": {
+      "title": "Credential",
+      "description": "A general structure for representing an on-chain `Credential`.\n\n Credentials are always one of two kinds: a direct public/private key\n pair, or a script (native or Plutus).",
+      "anyOf": [
+        {
+          "title": "VerificationKey",
+          "dataType": "constructor",
+          "index": 0,
+          "fields": [
+            {
+              "$ref": "#/definitions/aiken~1crypto~1VerificationKeyHash"
+            }
+          ]
+        },
+        {
+          "title": "Script",
+          "dataType": "constructor",
+          "index": 1,
+          "fields": [
+            {
+              "$ref": "#/definitions/aiken~1crypto~1ScriptHash"
+            }
+          ]
+        }
+      ]
+    },
+    "cardano/address/PaymentCredential": {
+      "title": "PaymentCredential",
+      "description": "A general structure for representing an on-chain `Credential`.\n\n Credentials are always one of two kinds: a direct public/private key\n pair, or a script (native or Plutus).",
+      "anyOf": [
+        {
+          "title": "VerificationKey",
+          "dataType": "constructor",
+          "index": 0,
+          "fields": [
+            {
+              "$ref": "#/definitions/aiken~1crypto~1VerificationKeyHash"
+            }
+          ]
+        },
+        {
+          "title": "Script",
+          "dataType": "constructor",
+          "index": 1,
+          "fields": [
+            {
+              "$ref": "#/definitions/aiken~1crypto~1ScriptHash"
+            }
+          ]
+        }
+      ]
+    },
+    "cardano/address/StakeCredential": {
+      "title": "StakeCredential",
+      "description": "Represent a type of object that can be represented either inline (by hash)\n or via a reference (i.e. a pointer to an on-chain location).\n\n This is mainly use for capturing pointers to a stake credential\n registration certificate in the case of so-called pointer addresses.",
+      "anyOf": [
+        {
+          "title": "Inline",
+          "dataType": "constructor",
+          "index": 0,
+          "fields": [
+            {
+              "$ref": "#/definitions/cardano~1address~1Credential"
+            }
+          ]
+        },
+        {
+          "title": "Pointer",
+          "dataType": "constructor",
+          "index": 1,
+          "fields": [
+            {
+              "title": "slot_number",
+              "$ref": "#/definitions/Int"
+            },
+            {
+              "title": "transaction_index",
+              "$ref": "#/definitions/Int"
+            },
+            {
+              "title": "certificate_index",
+              "$ref": "#/definitions/Int"
+            }
+          ]
+        }
+      ]
+    },
+    "cardano/assets/PolicyId": {
+      "title": "PolicyId",
+      "dataType": "bytes"
+    },
+    "cardano/transaction/OutputReference": {
+      "title": "OutputReference",
+      "description": "An `OutputReference` is a unique reference to an output on-chain. The `output_index`\n corresponds to the position in the output list of the transaction (identified by its id)\n that produced that output",
+      "anyOf": [
+        {
+          "title": "OutputReference",
+          "dataType": "constructor",
+          "index": 0,
+          "fields": [
+            {
+              "title": "transaction_id",
+              "$ref": "#/definitions/ByteArray"
+            },
+            {
+              "title": "output_index",
+              "$ref": "#/definitions/Int"
+            }
+          ]
+        }
+      ]
+    },
+    "oracle/ConsumerAction": {
+      "title": "ConsumerAction",
+      "anyOf": [
+        {
+          "title": "Buy",
+          "dataType": "constructor",
+          "index": 0,
+          "fields": []
+        }
+      ]
+    },
+    "oracle/ConsumerDatum": {
+      "title": "ConsumerDatum",
+      "description": "A toy \"buy\" validator that authorises a spend only if the oracle price is\n above a configured threshold AND the oracle reading is fresh enough.\n\n The consumer NEVER spends the oracle UTXO — it only references it. This is\n what makes the oracle pattern scale: thousands of consumer transactions in\n the same block can all reference the same oracle UTXO concurrently.",
+      "anyOf": [
+        {
+          "title": "ConsumerDatum",
+          "dataType": "constructor",
+          "index": 0,
+          "fields": [
+            {
+              "title": "threshold",
+              "description": "Minimum acceptable price.",
+              "$ref": "#/definitions/Int"
+            },
+            {
+              "title": "max_age_ms",
+              "description": "Reading must be no older than this (in ms) at the time of validation.",
+              "$ref": "#/definitions/Int"
+            },
+            {
+              "title": "owner",
+              "description": "Address that owns this consumer UTXO.",
+              "$ref": "#/definitions/aiken~1crypto~1VerificationKeyHash"
+            }
+          ]
+        }
+      ]
+    },
+    "oracle/FeedAction": {
+      "title": "FeedAction",
+      "description": "Spend redeemer for the oracle.",
+      "anyOf": [
+        {
+          "title": "Update",
+          "dataType": "constructor",
+          "index": 0,
+          "fields": []
+        }
+      ]
+    },
+    "oracle/FeedDatum": {
+      "title": "FeedDatum",
+      "description": "Datum stored at the oracle UTXO.",
+      "anyOf": [
+        {
+          "title": "FeedDatum",
+          "dataType": "constructor",
+          "index": 0,
+          "fields": [
+            {
+              "title": "price",
+              "description": "The price (e.g. ADA/USD scaled by 1_000_000).",
+              "$ref": "#/definitions/Int"
+            },
+            {
+              "title": "updated_at",
+              "description": "POSIX time in milliseconds when the feed was last updated.\n Consumers should reject the value if it is too old.",
+              "$ref": "#/definitions/Int"
+            }
+          ]
+        }
+      ]
+    },
+    "state_machine/Counter": {
+      "title": "Counter",
+      "description": "The on-chain state. Includes a tag to make the state machine explicit\n and a counter that can only move in approved ways.",
+      "anyOf": [
+        {
+          "title": "Counter",
+          "dataType": "constructor",
+          "index": 0,
+          "fields": [
+            {
+              "title": "state",
+              "$ref": "#/definitions/state_machine~1Phase"
+            },
+            {
+              "title": "count",
+              "$ref": "#/definitions/Int"
+            },
+            {
+              "title": "owner",
+              "$ref": "#/definitions/aiken~1crypto~1VerificationKeyHash"
+            }
+          ]
+        }
+      ]
+    },
+    "state_machine/MintAction": {
+      "title": "MintAction",
+      "description": "Mint redeemer — controls creation and destruction of the thread token.",
+      "anyOf": [
+        {
+          "title": "Init",
+          "description": "Mint the thread NFT, using a seed UTXO for one-shot uniqueness.",
+          "dataType": "constructor",
+          "index": 0,
+          "fields": [
+            {
+              "title": "seed",
+              "$ref": "#/definitions/cardano~1transaction~1OutputReference"
+            }
+          ]
+        },
+        {
+          "title": "Burn",
+          "description": "Burn the thread NFT — only allowed when the state UTXO is in Closed phase.",
+          "dataType": "constructor",
+          "index": 1,
+          "fields": []
+        }
+      ]
+    },
+    "state_machine/Phase": {
+      "title": "Phase",
+      "description": "Phases of the state machine. Allowed transitions:\n   Idle    → Active   (Start)\n   Active  → Active   (Increment)\n   Active  → Closed   (Stop)\n   Closed  → ⊥        (terminal — UTXO must be burned)",
+      "anyOf": [
+        {
+          "title": "Idle",
+          "dataType": "constructor",
+          "index": 0,
+          "fields": []
+        },
+        {
+          "title": "Active",
+          "dataType": "constructor",
+          "index": 1,
+          "fields": []
+        },
+        {
+          "title": "Closed",
+          "dataType": "constructor",
+          "index": 2,
+          "fields": []
+        }
+      ]
+    },
+    "state_machine/StepAction": {
+      "title": "StepAction",
+      "description": "Spend redeemer — controls valid state transitions.",
+      "anyOf": [
+        {
+          "title": "Start",
+          "dataType": "constructor",
+          "index": 0,
+          "fields": []
+        },
+        {
+          "title": "Increment",
+          "dataType": "constructor",
+          "index": 1,
+          "fields": []
+        },
+        {
+          "title": "Stop",
+          "dataType": "constructor",
+          "index": 2,
+          "fields": []
+        }
+      ]
+    },
+    "withdraw_zero/BatchAction": {
+      "title": "BatchAction",
+      "description": "Batch redeemer — passed once to the stake validator. In production this\n would carry per-order indices and matching info.",
+      "anyOf": [
+        {
+          "title": "Settle",
+          "dataType": "constructor",
+          "index": 0,
+          "fields": []
+        }
+      ]
+    },
+    "withdraw_zero/Order": {
+      "title": "Order",
+      "description": "Datum at each order UTXO. Trivial here — in production this would carry\n the trader's intent (asset_in, asset_out, min_received, deadline, etc.).",
+      "anyOf": [
+        {
+          "title": "Order",
+          "dataType": "constructor",
+          "index": 0,
+          "fields": [
+            {
+              "title": "trader",
+              "$ref": "#/definitions/ByteArray"
+            },
+            {
+              "title": "amount",
+              "$ref": "#/definitions/Int"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

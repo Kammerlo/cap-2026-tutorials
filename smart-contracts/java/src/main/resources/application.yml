@@ -6,7 +6,7 @@ cardano:
   network: preprod
   # Blockfrost API key - get yours at https://blockfrost.io
   blockfrost:
-    api-key: ${BLOCKFROST_API_KEY:preprodZEmM7OOBVakw4scKjNORobPzI1xCOkki}
+    api-key: ${BLOCKFROST_API_KEY:preprodGXg1qnBmyubY3fNboTdNa2zMYRcXrN1X}
     base-url: https://cardano-preprod.blockfrost.io/api/v0/
 
 springdoc:
